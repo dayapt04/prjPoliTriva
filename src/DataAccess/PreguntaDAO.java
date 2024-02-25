@@ -17,8 +17,8 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
     public PreguntaDTO readBy(Integer id) throws Exception {
         PreguntaDTO oP = new PreguntaDTO();
         String query = " SELECT IdPregunta               "
-                + " ,IdCategoriaPregunta      "
-                + " ,Pregunta                       "
+                + " ,IdCategoriaEstructura      "
+                + " ,Enunciado                       "
                 + " ,Respuesta                      "
                 + " ,Estado                         "
                 + " ,FechaCrea                      "
@@ -31,8 +31,8 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
             ResultSet rs = stmt.executeQuery(query); // ejecutar la
             while (rs.next()) {
                 oP = new PreguntaDTO(rs.getInt(1) // IdPregunta
-                        , rs.getInt(2) // IdCategoriaPregunta
-                        , rs.getString(3) // Pregunta
+                        , rs.getInt(2) // IdCategoriaEstructura
+                        , rs.getString(3) // Enunciado
                         , rs.getString(4) // Respuesta
                         , rs.getString(5) // Estado
                         , rs.getString(6) // FechaCrea
@@ -48,8 +48,8 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
     public List<PreguntaDTO> readAll() throws Exception {
         List<PreguntaDTO> lst = new ArrayList<>();
         String query = " SELECT IdPregunta               "
-                + " ,IdCategoriaPregunta      "
-                + " ,Pregunta                       "
+                + " ,IdCategoriaEstructura      "
+                + " ,Enunciado                       "
                 + " ,Respuesta                      "
                 + " ,Estado                         "
                 + " ,FechaCrea                      "
@@ -62,8 +62,8 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
             ResultSet rs = stmt.executeQuery(query); // ejecutar la
             while (rs.next()) {
                 PreguntaDTO preguntaDTO = new PreguntaDTO(rs.getInt(1) // IdPregunta
-                        , rs.getInt(2) // IdCategoriaPregunta
-                        , rs.getString(3) // Pregunta
+                        , rs.getInt(2) // IdCategoriaEstructura
+                        , rs.getString(3) // Enunciado
                         , rs.getString(4) // Respuesta
                         , rs.getString(5) // Estado
                         , rs.getString(6) // FechaCrea
@@ -78,11 +78,11 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
 
     @Override
     public boolean create(PreguntaDTO entity) throws Exception {
-        String query = " INSERT INTO PREGUNTA (Pregunta, Respuesta) VALUES (?)";
+        String query = " INSERT INTO PREGUNTA (Enunciado, Respuesta) VALUES (?)";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getPregunta());
+            pstmt.setString(1, entity.getEnunciado());
             pstmt.setString(2, entity.getRespuesta());
             pstmt.executeUpdate();
             return true;
@@ -95,12 +95,12 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
     public boolean update(PreguntaDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE PREGUNTA SET IdCategoriaPregunta = ?, Pregunta = ?, Respuesta = ?, FechaModifica = ? WHERE IdPregunta = ?";
+        String query = " UPDATE PREGUNTA SET IdCategoriaEstructura = ?, Pregunta = ?, Respuesta = ?, FechaModifica = ? WHERE IdPregunta = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1, entity.getIdCategoriaPregunta());
-            pstmt.setString(2, entity.getPregunta());
+            pstmt.setInt(1, entity.getIdCateogoriaEstructura());
+            pstmt.setString(2, entity.getEnunciado());
             pstmt.setString(3, entity.getRespuesta());
             pstmt.setString(4, dtf.format(now).toString());
             pstmt.setInt(5, entity.getIdPregunta());

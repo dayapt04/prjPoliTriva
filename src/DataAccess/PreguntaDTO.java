@@ -2,8 +2,8 @@ package DataAccess;
 
 public class PreguntaDTO {
     private Integer IdPregunta;
-    private Integer IdCategoriaPregunta;
-    private String Pregunta;
+    private Integer IdCategoriaEstructura;
+    private String Enunciado;
     private String Respuesta;
     private String Estado;
     private String FechaCrea;
@@ -12,11 +12,11 @@ public class PreguntaDTO {
     public PreguntaDTO() {
     }
 
-    public PreguntaDTO(int IdPregunta, int IdCategoriaPregunta, String Pregunta, String Respuesta, String Estado,
+    public PreguntaDTO(int IdPregunta, int IdCategoriaEstructura, String Enunciado, String Respuesta, String Estado,
             String FechaCrea, String FechaModifica) {
         this.IdPregunta = IdPregunta;
-        this.IdCategoriaPregunta = IdCategoriaPregunta;
-        this.Pregunta = Pregunta;
+        this.IdCategoriaEstructura = IdCategoriaEstructura;
+        this.Enunciado = Enunciado;
         this.Respuesta = Respuesta;
         this.Estado = Estado;
         this.FechaCrea = FechaCrea;
@@ -27,12 +27,12 @@ public class PreguntaDTO {
         return IdPregunta;
     }
 
-    public Integer getIdCategoriaPregunta() {
-        return IdCategoriaPregunta;
+    public Integer getIdCateogoriaEstructura() {
+        return IdCategoriaEstructura;
     }
 
-    public String getPregunta() {
-        return Pregunta;
+    public String getEnunciado() {
+        return Enunciado;
     }
 
     public String getRespuesta() {
@@ -54,12 +54,17 @@ public class PreguntaDTO {
     @Override
     public String toString() {
         return getClass().getName()
-                + "\n IdPregunta:   " + getIdPregunta()
-                + "\n IdCategoria:  " + getIdCategoriaPregunta()
-                + "\n Pregunta:     " + getPregunta()
-                + "\n Respuesta:    " + getRespuesta()
-                + "\n Estado:       " + getEstado()
-                + "\n FechaCrea:    " + getFechaCrea()
-                + "\n FechaModifica:" + getFechaModifica();
+                // + "\n IdPregunta: " + getIdPregunta()
+                // + "\n IdCategoria: " + getIdCateogoriaEstructura()
+                // + "\n Enunciado: " + getEnunciado()
+                // + "\n Respuesta: " + getRespuesta()
+                // + "\n Estado: " + getEstado()
+                // + "\n FechaCrea: " + getFechaCrea()
+                // + "\n FechaModifica:" + getFechaModifica();
+
+                + "\n PREGUNTA:     " + getIdPregunta()
+                + "\n               " + getEnunciado()
+                + "\n RESPUESTA:    " + getRespuesta();
+
     }
 }
