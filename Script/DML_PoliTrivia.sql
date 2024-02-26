@@ -33,7 +33,7 @@ VALUES
     (2, 'Te vas a supletorios.', 1),
 
     (3, 'Sistemas.', 1), --Incorrecta
-    (3, 'Es la primera opción.', 1), --Correcta
+    (3, 'Tú sabes la opción correcta.', 0), --Correcta
     (3, '¿Por qué quieres otra respuesta?', 0),
 
     (4, 'Porque les gustan las franelas.', 0), --Incorrecta
@@ -242,10 +242,3 @@ VALUES
     (35, 'Una política de apertura hacia la cooperación regional y global.', 1), --Correcta
     (35, 'Una política de confrontación constante con países vecinos.', 0);
 
-INSERT INTO
-    Respuesta (IdPregunta, RespuestaUsuario, Aprobada)
-VALUES
-    (1, 'a', 0), --Incorrecta
-    (1, 'b', 1);
-
---Correcta

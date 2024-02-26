@@ -21,7 +21,6 @@ public class App {
 
         Integer numeroRespuestaCorrecta = 0;
         String usuarioRespuesta = "";
-        Integer puntajeUsuario = 0;
         Integer totalPreguntas = 0;
 
         int opcionUsuario;
@@ -46,6 +45,7 @@ public class App {
             }
         } else {
             Jugador = new JugadorAnfitrion[1];
+            Jugador[0] = new JugadorAnfitrion("Solitario");
         }
 
         do {
@@ -100,15 +100,22 @@ public class App {
 
                                             Jugador[ju].aumentarPuntaje(1);
                                         }
-                                        // totalPreguntas++;
+
                                     }
                                     // System.out.println("Respuesta correcta");
                                     for (int ju = 0; ju < Jugador.length; ju++) {
                                         int puntajeDespues = Jugador[ju].getPuntaje();
                                         boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
-                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": " + (respuestaCorrecta ? "Respuestas correcta" : "Respuestas incorrecta"));
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
+                                    totalPreguntas++;
                                 }
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
+
                                 // System.out
                                 // .println("Jugador correctamente en esta rona " + puntajeUsuario + "/"
                                 // + totalPreguntas);
@@ -132,19 +139,33 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out
-                                        .println("Usted ha contestado correctamente " + puntajeUsuario + "/"
-                                                + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 3:
                                 condicion = 1;
@@ -195,18 +216,34 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out.println(
-                                        "Usted ha contestado correctamente " + puntajeUsuario + "/" + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 2:
 
@@ -227,18 +264,34 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+                                        totalPreguntas++;
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out.println(
-                                        "Usted ha contestado correctamente " + puntajeUsuario + "/" + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 3:
                                 List<PreguntaDTO> preguntasMecanica = pDAO.readById(7);
@@ -258,18 +311,34 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+                                        totalPreguntas++;
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out.println(
-                                        "Usted ha contestado correctamente " + puntajeUsuario + "/" + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 4:
                                 List<PreguntaDTO> preguntasCOE = pDAO.readById(8);
@@ -289,18 +358,34 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+                                        totalPreguntas++;
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out.println(
-                                        "Usted ha contestado correctamente " + puntajeUsuario + "/" + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 5:
                                 List<PreguntaDTO> preguntasPolitica = pDAO.readById(9);
@@ -320,18 +405,34 @@ public class App {
                                         }
                                     }
 
-                                    System.out.println("Ingrese su respuesta");
-                                    usuarioRespuesta = sc.nextLine();
-                                    if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
-                                        System.out.println("Respuesta correcta");
-                                        puntajeUsuario++;
-                                    } else {
-                                        System.out.println("Respuesta incorrecta");
+                                    int[] puntajesAntes = new int[Jugador.length];
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        puntajesAntes[ju] = Jugador[ju].getPuntaje();
+                                    }
+
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+
+                                        System.out.println("Ingrese su respuesta " + Jugador[ju].getTJnombre());
+                                        usuarioRespuesta = sc.nextLine();
+                                        if (usuarioRespuesta.equals(numeroRespuestaCorrecta.toString())) {
+
+                                            Jugador[ju].aumentarPuntaje(1);
+                                        }
+
+                                    }
+                                    // System.out.println("Respuesta correcta");
+                                    for (int ju = 0; ju < Jugador.length; ju++) {
+                                        int puntajeDespues = Jugador[ju].getPuntaje();
+                                        boolean respuestaCorrecta = puntajeDespues > puntajesAntes[ju];
+                                        System.out.println("Jugador " + Jugador[ju].getTJnombre() + ": "
+                                                + (respuestaCorrecta ? "Respuesta correcta" : "Respuesta incorrecta"));
                                     }
                                     totalPreguntas++;
                                 }
-                                System.out.println(
-                                        "Usted ha contestado correctamente " + puntajeUsuario + "/" + totalPreguntas);
+                                for (int h = 0; h < Jugador.length; h++) {
+                                    System.out.println("* " + Jugador[h].getTJnombre() + " obtuvo "
+                                            + Jugador[h].getPuntaje() + "/" + totalPreguntas);
+                                }
                                 break;
                             case 6:
                                 condicion1 = 1;
