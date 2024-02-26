@@ -19,7 +19,6 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
         String query = " SELECT IdPregunta               "
                 + " ,IdCategoriaEstructura      "
                 + " ,Enunciado                       "
-                + " ,Respuesta                      "
                 + " ,Estado                         "
                 + " ,FechaCrea                      "
                 + " ,FechaModifica                  "
@@ -33,10 +32,9 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
                 oP = new PreguntaDTO(rs.getInt(1) // IdPregunta
                         , rs.getInt(2) // IdCategoriaEstructura
                         , rs.getString(3) // Enunciado
-                        , rs.getString(4) // Respuesta
-                        , rs.getString(5) // Estado
-                        , rs.getString(6) // FechaCrea
-                        , rs.getString(7)); // FechaModifica
+                        , rs.getString(4) // Estado
+                        , rs.getString(5) // FechaCrea
+                        , rs.getString(6)); // FechaModifica
             }
         } catch (SQLException e) {
             throw new PException(e.getMessage(), getClass().getName(), "readBy()");
@@ -50,7 +48,6 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
         String query = " SELECT IdPregunta               "
                 + " ,IdCategoriaEstructura      "
                 + " ,Enunciado                       "
-                + " ,Respuesta                      "
                 + " ,Estado                         "
                 + " ,FechaCrea                      "
                 + " ,FechaModifica                  "
@@ -64,10 +61,41 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
                 PreguntaDTO preguntaDTO = new PreguntaDTO(rs.getInt(1) // IdPregunta
                         , rs.getInt(2) // IdCategoriaEstructura
                         , rs.getString(3) // Enunciado
-                        , rs.getString(4) // Respuesta
-                        , rs.getString(5) // Estado
-                        , rs.getString(6) // FechaCrea
-                        , rs.getString(7));// FechaModifica
+                        
+                        , rs.getString(4) // Estado
+                        , rs.getString(5) // FechaCrea
+                        , rs.getString(6));// FechaModifica
+                lst.add(preguntaDTO);
+            }
+        } catch (SQLException e) {
+            throw new PException(e.getMessage(), getClass().getName(), "readAll()");
+        }
+        return lst;
+    }
+
+    @Override
+    public List<PreguntaDTO> readById(Integer id) throws Exception {
+        List<PreguntaDTO> lst = new ArrayList<>();
+        String query = " SELECT IdPregunta               "
+                + " ,IdCategoriaEstructura      "
+                + " ,Enunciado                       "
+                + " ,Estado                         "
+                + " ,FechaCrea                      "
+                + " ,FechaModifica                  "
+                + " FROM    PREGUNTA                "
+                + " WHERE   Estado ='A' AND IdCategoriaEstructura =   " + id.toString();
+        try {
+            Connection conn = openConnection(); // conectar a DB
+            Statement stmt = conn.createStatement(); // CRUD : select * ...
+            ResultSet rs = stmt.executeQuery(query); // ejecutar la
+            while (rs.next()) {
+                PreguntaDTO preguntaDTO = new PreguntaDTO(rs.getInt(1) // IdPregunta
+                        , rs.getInt(2) // IdCategoriaEstructura
+                        , rs.getString(3) // Enunciado
+                        
+                        , rs.getString(4) // Estado
+                        , rs.getString(5) // FechaCrea
+                        , rs.getString(6));// FechaModifica
                 lst.add(preguntaDTO);
             }
         } catch (SQLException e) {
@@ -83,7 +111,6 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, entity.getEnunciado());
-            pstmt.setString(2, entity.getRespuesta());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -95,15 +122,14 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
     public boolean update(PreguntaDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE PREGUNTA SET IdCategoriaEstructura = ?, Pregunta = ?, Respuesta = ?, FechaModifica = ? WHERE IdPregunta = ?";
+        String query = " UPDATE PREGUNTA SET IdCategoriaEstructura = ?, Pregunta = ?, FechaModifica = ? WHERE IdPregunta = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, entity.getIdCateogoriaEstructura());
             pstmt.setString(2, entity.getEnunciado());
-            pstmt.setString(3, entity.getRespuesta());
-            pstmt.setString(4, dtf.format(now).toString());
-            pstmt.setInt(5, entity.getIdPregunta());
+            pstmt.setString(3, dtf.format(now).toString());
+            pstmt.setInt(4, entity.getIdPregunta());
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {

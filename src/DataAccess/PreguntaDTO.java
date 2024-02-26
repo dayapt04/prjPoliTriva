@@ -4,7 +4,7 @@ public class PreguntaDTO {
     private Integer IdPregunta;
     private Integer IdCategoriaEstructura;
     private String Enunciado;
-    private String Respuesta;
+    
     private String Estado;
     private String FechaCrea;
     private String FechaModifica;
@@ -12,12 +12,12 @@ public class PreguntaDTO {
     public PreguntaDTO() {
     }
 
-    public PreguntaDTO(int IdPregunta, int IdCategoriaEstructura, String Enunciado, String Respuesta, String Estado,
+    public PreguntaDTO(int IdPregunta, int IdCategoriaEstructura, String Enunciado, String Estado,
             String FechaCrea, String FechaModifica) {
         this.IdPregunta = IdPregunta;
         this.IdCategoriaEstructura = IdCategoriaEstructura;
         this.Enunciado = Enunciado;
-        this.Respuesta = Respuesta;
+        
         this.Estado = Estado;
         this.FechaCrea = FechaCrea;
         this.FechaModifica = FechaModifica;
@@ -35,10 +35,6 @@ public class PreguntaDTO {
         return Enunciado;
     }
 
-    public String getRespuesta() {
-        return Respuesta;
-    }
-
     public String getEstado() {
         return Estado;
     }
@@ -53,18 +49,8 @@ public class PreguntaDTO {
 
     @Override
     public String toString() {
-        return getClass().getName()
-                // + "\n IdPregunta: " + getIdPregunta()
-                // + "\n IdCategoria: " + getIdCateogoriaEstructura()
-                // + "\n Enunciado: " + getEnunciado()
-                // + "\n Respuesta: " + getRespuesta()
-                // + "\n Estado: " + getEstado()
-                // + "\n FechaCrea: " + getFechaCrea()
-                // + "\n FechaModifica:" + getFechaModifica();
+        return "\n \nPREGUNTA:     " + getIdPregunta() + ": " + getEnunciado() ;
 
-                + "\n PREGUNTA:     " + getIdPregunta()
-                + "\n               " + getEnunciado()
-                + "\n RESPUESTA:    " + getRespuesta();
 
     }
 }

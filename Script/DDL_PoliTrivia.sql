@@ -29,7 +29,6 @@ CREATE TABLE
         IdPregunta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
         IdCategoriaEstructura INTEGER NOT NULL REFERENCES CategoriaEstructura (IdCategoriaEstructura),
         Enunciado TEXT NOT NULL,
-        Respuesta TEXT NOT NULL,
         Estado VARCHAR(1) NOT NULL DEFAULT ('A'),
         FechaCrea DATETIME DEFAULT (datetime('now', 'localtime')),
         FechaModifica DATETIME
@@ -83,6 +82,10 @@ FROM
     Pregunta
 WHERE
     Estado = "A";
+
+SELECT    *
+FROM Respuesta
+WHERE   IdPregunta = 3;
 
 SELECT
     p.IdPregunta PreguntaId,
