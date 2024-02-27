@@ -47,28 +47,6 @@ CREATE TABLE
         FechaModifica DATETIME
     );
 
-DROP TABLE IF EXISTS EtiquetaPregunta;
-
--- CREATE TABLE
---     EtiquetaPregunta (
---         IdEtiquetaPregunta INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
---         Nombre VARCHAR(50) NOT NULL,
---         Descripcion VARCHAR(255) DEFAULT NULL,
---         Estado VARCHAR(1) NOT NULL DEFAULT ('A'),
---         FechaCrea DATETIME DEFAULT (datetime('now', 'localtime')),
---         FechaModifica DATETIME
---     );
--- -- Tabla de relaciones entre preguntas y etiquetas
-DROP TABLE IF EXISTS PreguntaEtiqueta;
-
--- CREATE TABLE
---     PreguntaEtiqueta (
---         IdPregunta INTEGER NOT NULL REFERENCES Pregunta (IdPregunta),
---         IdEtiquetaPregunta INTEGER NOT NULL REFERENCES EtiquetaPregunta (IdEtiquetaPregunta),
---         Estado VARCHAR(1) NOT NULL DEFAULT ('A'),
---         FechaCrea DATETIME DEFAULT (datetime('now', 'localtime')),
---         FechaModifica DATETIME
---     );
 SELECT
     *
 FROM
@@ -83,9 +61,12 @@ FROM
 WHERE
     Estado = "A";
 
-SELECT    *
-FROM Respuesta
-WHERE   IdPregunta = 3;
+SELECT
+    *
+FROM
+    Respuesta
+WHERE
+    IdPregunta = 3;
 
 SELECT
     p.IdPregunta PreguntaId,

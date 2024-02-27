@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Image;
+
 public class LZLectorQR {
     public static void mostrarImagenQR(String fileName) {
         ImageIcon icon = new ImageIcon(fileName);
