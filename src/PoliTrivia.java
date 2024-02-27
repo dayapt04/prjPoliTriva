@@ -450,18 +450,17 @@ public class PoliTrivia {
             // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < anfitrion.getPANumJugadores(); i++) {
                 // int random =generarNumeroAleatorio(0, 20);
-
                 int random[] = new int[20];
                 String penitencia = "";
                 for (int j = 0; j <= 19; j++) {
                     random[j] = generarNumeroAleatorio();
 
-                    penitencia = (i == anfitrion.paIndiceMayorPuntaje(jugadores)) ? ""
+                    penitencia = (i == 0)
+                            ? ""
                             : anfitrion.paListaPenitencias().get(random[j]);
                 }
 
-                writer.write((i + 1) + "," + anfitrion.paObtenerNombresJugadores(jugadores).get(i) + ","
-                        + anfitrion.paObtenerPuntajesJugadores(jugadores).get(i)
+                writer.write((i + 1) + "," + anfitrion.paObtenerNombresJugadoresConPuntajes(jugadores).get(i)
                         + "," + penitencia);
                 writer.newLine();
             }
