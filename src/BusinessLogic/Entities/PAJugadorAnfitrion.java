@@ -23,26 +23,31 @@ public class PAJugadorAnfitrion extends TJJugador {
         } else
             this.paNumJugadores = paNumJugadores;
     }
-
+    
     public PAJugadorAnfitrion[] paEscogerParametrosJuego() {
-        PAJugadorAnfitrion[] Jugador;
-        int cantidadJugadores;
+        PAJugadorAnfitrion[] Jugador = new PAJugadorAnfitrion[0];
+        //PAJugadorAnfitrion[] Jugador;
+        String cantidadJugadores1 = " ";
+        int cantidadJugadores = 0;
+        
         System.out.println("1. Individual \n2. Multijugador");
         int bucle = 0;
         do {
-            try {
+            
                 int tipoDeJuego = sc.nextInt();
-                if (tipoDeJuego != 1) {
+                sc.nextLine();
+                if (tipoDeJuego == 2) {
                     do {
                         System.out.print("Ingrese  el número de jugadores: ");
-                        cantidadJugadores = sc.nextInt();
+                        cantidadJugadores1 = sc.nextLine();
+                        if (cantidadJugadores1.equals("2") || cantidadJugadores1.equals("3") || cantidadJugadores1.equals("4") || cantidadJugadores1.equals("5")) {
+                            cantidadJugadores = Integer.parseInt(cantidadJugadores1);    
+                        }
+                        
                         setPANumJugadores(cantidadJugadores);
-                        sc.nextLine();
+                        //sc.nextLine();
                         Jugador = new PAJugadorAnfitrion[cantidadJugadores];
 
-                        if (cantidadJugadores != 0) {
-                            continue;
-                        }
                     } while (getPANumJugadores() == 0);
 
                     for (int i = 0; i < cantidadJugadores; i++) {
@@ -50,20 +55,21 @@ public class PAJugadorAnfitrion extends TJJugador {
                         String NombreJugador = sc.nextLine();
                         Jugador[i] = new PAJugadorAnfitrion(NombreJugador);
                     }
-                } else {
+                    bucle = 1;
+                    //return Jugador;
+                } else if (tipoDeJuego == 1) {
                     Jugador = new PAJugadorAnfitrion[1];
                     Jugador[0] = new PAJugadorAnfitrion("Solitario");
+                    bucle = 1;
+                    //return Jugador;
                 }
-                bucle = 1;
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Debes ingresar un número entero.");
-                sc.nextLine();
-                Jugador = new PAJugadorAnfitrion[0];
-                bucle = 1;
-            }
+                // }else{
+                //     System.out.print("Ingrese un numero valido: ");        
+                // }
+                
         } while (bucle != 1);
-
         return Jugador;
+        
     }
 
     public ArrayList<String> paListaPenitencias() {
