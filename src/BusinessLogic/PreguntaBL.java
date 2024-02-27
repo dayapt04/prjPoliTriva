@@ -1,5 +1,5 @@
 package BusinessLogic;
 
-public class BL {
+public class PreguntaBL {
 
 }

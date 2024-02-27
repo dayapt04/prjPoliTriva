@@ -1,5 +1,5 @@
 package BusinessLogic.Entities;
 
-public class Pregunta {
+public class TJJugador {
 
 }

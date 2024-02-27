@@ -1,5 +1,5 @@
 package BusinessLogic.Entities;
 
-public class Jugador {
+public class LZCodigoQR {
 
 }
