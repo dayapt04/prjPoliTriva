@@ -1,5 +1,5 @@
 package BusinessLogic.Entities;
 
-public class LectorQR {
+public class LZLectorQR {
 
 }

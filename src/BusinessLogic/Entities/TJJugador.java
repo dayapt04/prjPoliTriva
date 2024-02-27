@@ -1,6 +1,6 @@
 package BusinessLogic.Entities;
 
-public abstract class Jugador {
+public abstract class TJJugador {
     public static int length;
     private String TJnombre;
 
@@ -22,11 +22,11 @@ public abstract class Jugador {
         this.puntaje = puntaje;
     }
 
-    public void aumentarPuntaje(int Punto){
+    public void aumentarPuntaje(int Punto) {
         this.puntaje += Punto;
     }
 
-    public Jugador(String nombre) {
+    public TJJugador(String nombre) {
         this.TJnombre = nombre;
         this.puntaje = 0;
     }

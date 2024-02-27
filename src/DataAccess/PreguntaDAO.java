@@ -61,7 +61,7 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
                 PreguntaDTO preguntaDTO = new PreguntaDTO(rs.getInt(1) // IdPregunta
                         , rs.getInt(2) // IdCategoriaEstructura
                         , rs.getString(3) // Enunciado
-                        
+
                         , rs.getString(4) // Estado
                         , rs.getString(5) // FechaCrea
                         , rs.getString(6));// FechaModifica
@@ -92,7 +92,7 @@ public class PreguntaDAO extends SQLiteDataHelper implements IDAO<PreguntaDTO> {
                 PreguntaDTO preguntaDTO = new PreguntaDTO(rs.getInt(1) // IdPregunta
                         , rs.getInt(2) // IdCategoriaEstructura
                         , rs.getString(3) // Enunciado
-                        
+
                         , rs.getString(4) // Estado
                         , rs.getString(5) // FechaCrea
                         , rs.getString(6));// FechaModifica

@@ -39,10 +39,10 @@ public class RespuestaDAO extends SQLiteDataHelper implements IDAO<RespuestaDTO>
     public List<RespuestaDTO> readAll() throws Exception {
         List<RespuestaDTO> lst = new ArrayList<>();
         String query = " SELECT IdRespuesta               "
-        + " ,IdPregunta     "
-        + " ,RespuestaUsuario                       "
-        + " ,Aprobada                         "
-        + " FROM    Respuesta                ";
+                + " ,IdPregunta     "
+                + " ,RespuestaUsuario                       "
+                + " ,Aprobada                         "
+                + " FROM    Respuesta                ";
         try {
             Connection conn = openConnection(); // conectar a DB
             Statement stmt = conn.createStatement(); // CRUD : select * ...
@@ -65,11 +65,11 @@ public class RespuestaDAO extends SQLiteDataHelper implements IDAO<RespuestaDTO>
     public List<RespuestaDTO> readById(Integer id) throws Exception {
         List<RespuestaDTO> lst = new ArrayList<>();
         String query = " SELECT IdRespuesta               "
-        + " ,IdPregunta     "
-        + " ,RespuestaUsuario                       "
-        + " ,Aprobada                         "
-        + " FROM    Respuesta                "
-        + " WHERE   IdPregunta =   " + id.toString();
+                + " ,IdPregunta     "
+                + " ,RespuestaUsuario                       "
+                + " ,Aprobada                         "
+                + " FROM    Respuesta                "
+                + " WHERE   IdPregunta =   " + id.toString();
         try {
             Connection conn = openConnection(); // conectar a DB
             Statement stmt = conn.createStatement(); // CRUD : select * ...
@@ -110,7 +110,7 @@ public class RespuestaDAO extends SQLiteDataHelper implements IDAO<RespuestaDTO>
         try {
             Connection conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-   
+
             pstmt.setString(1, entity.getRespuestaUsuario());
             pstmt.setInt(2, entity.getAprobada());
             pstmt.setInt(3, entity.getIdRespuesta());

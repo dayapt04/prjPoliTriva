@@ -1,5 +1,5 @@
 package BusinessLogic.Entities;
 
-public class CodigoQR {
-    
+public class LZCodigoQR {
+
 }
