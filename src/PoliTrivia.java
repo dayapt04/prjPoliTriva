@@ -1,3 +1,4 @@
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import BusinessLogic.Entities.LZCodigoQR;
+import BusinessLogic.Entities.LZLectorQR;
 import BusinessLogic.Entities.PAJugadorAnfitrion;
 import DataAccess.PreguntaDAO;
 import DataAccess.PreguntaDTO;
@@ -441,33 +444,97 @@ public class PoliTrivia {
     }
 
     public void paGuardarArchivoPenitencias(PAJugadorAnfitrion anfitrion, PAJugadorAnfitrion[] jugadores) {
-        // JugadorAnfitrion jugadorAnfitrion = new JugadorAnfitrion(null);
-        // String[] nombres = jugadorAnfitrion.get();
-        // ArrayList<String> penitencias = anfitrion.listaPenitencias(null)
-        String fileCSV = "database\\penitencias.csv";
+        String HTML = "<!DOCTYPE html>\r\n" + //
+                "<html lang=\"es\">\r\n" + //
+                "<head>  <meta charset=\"UTF-8\">  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+                + //
+                "<title>PoliTrivia</title>\r\n" + //
+                "<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">\r\n" + //
+                "<style>\r\n" + //
+                "  body {\r\n" + //
+                "    background-color: black;\r\n" + //
+                "    color: white;\r\n" + //
+                "    font-family: 'Roboto', sans-serif; \r\n" + //
+                "    text-align: center;\r\n" + //
+                "  }\r\n" + //
+                "  h1 {\r\n" + //
+                "    margin-top: 20px;\r\n" + //
+                "  }\r\n" + //
+                "  table {\r\n" + //
+                "    border-collapse: collapse;\r\n" + //
+                "    width: 100%;\r\n" + //
+                "    margin-top: 20px;\r\n" + //
+                "  }\r\n" + //
+                "  th, td {\r\n" + //
+                "    border: 1px solid white;\r\n" + //
+                "    padding: 8px;\r\n" + //
+                "    text-align: left;\r\n" + //
+                "  }\r\n" + //
+                "  th {\r\n" + //
+                "    background-color: #333;\r\n" + //
+                "  }\r\n" + //
+                "</style>\r\n" + //
+                "</head>\r\n" + //
+                "<body>\r\n" + //
+                "<h1>Juego-Resultados</h1>\r\n" + //
+                "<table>\r\n" + //
+                "  <thead>\r\n" + //
+                "    <tr>\r\n" + //
+                "      <th>Lugar</th>\r\n" + //
+                "      <th>Nombre</th>\r\n" + //
+                "      <th>Puntaje</th>\r\n" + //
+                "      <th>Penitencia</th>\r\n" + //
+                "    </tr>\r\n" + //
+                "  </thead>\r\n" + //
+                "  <tbody>\r\n" + //
+                "    @tr\r\n" + //
+                "  </tbody>\r\n" + //
+                "</table>\r\n" + //
+                "</body>\r\n" + //
+                "</html>";
+
+        String fileCSV = "C:\\Users\\LENOVO\\OneDrive - Escuela Politécnica Nacional\\proyectoPolitrivia\\penitencias.html";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileCSV))) {
-            // FileWriter fileWriter = new FileWriter(fileCSV, true);
-            // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String tr = "";
+            String datos = "    <tr>\r\n" + //
+                    "      <td>@Lugar</td>\r\n" + //
+                    "      <td>@Nombre</td>\r\n" + //
+                    "      <td>@Puntaje</td>\r\n" + //
+                    "      <td>@Penitencia</td>\r\n" + //
+                    "    </tr>";
+
             for (int i = 0; i < anfitrion.getPANumJugadores(); i++) {
-                // int random =generarNumeroAleatorio(0, 20);
                 int random[] = new int[20];
                 String penitencia = "";
                 for (int j = 0; j <= 19; j++) {
                     random[j] = generarNumeroAleatorio();
-
-                    penitencia = (i == 0)
-                            ? ""
-                            : anfitrion.paListaPenitencias().get(random[j]);
+                    penitencia = (i == 0) ? "" : anfitrion.paListaPenitencias().get(random[j]);
                 }
 
-                writer.write((i + 1) + "," + anfitrion.paObtenerNombresJugadoresConPuntajes(jugadores).get(i)
-                        + "," + penitencia);
-                writer.newLine();
+                String Jugador = anfitrion.paObtenerNombresJugadoresConPuntajes(jugadores).get(i);
+                String nombre = Jugador.split(",")[0];
+                int puntajeJugador = Integer
+                        .parseInt(Jugador.split(",")[1]);
+
+                String fila = datos.replace("@Lugar", "P: " + (i + 1))
+                        .replace("@Nombre", nombre)
+                        .replace("@Puntaje", String.valueOf(puntajeJugador))
+                        .replace("@Penitencia", penitencia);
+
+                tr += fila + "\r\n";
             }
-            // writer.close();
+            System.out.println(tr);
+            HTML = HTML.replace("@tr", tr);
+            writer.write(HTML);
         } catch (IOException e) {
             System.err.println("Error al manipular el archivo " + fileCSV + ": " + e.getMessage());
         }
+
+        String data = "https://epnecuador-my.sharepoint.com/:u:/g/personal/alicia_pereira_epn_edu_ec/EdT-yIqHaQFInOUbLPTU_7ABepGxJPz4SBSfNYjYz2r9_g?e=duQtPQ";
+
+        String filePath = "qr_code.png";
+        LZCodigoQR.generateQR(data, filePath);
+        LZLectorQR.mostrarImagenQR(filePath);
     }
 
     public static int generarNumeroAleatorio() {

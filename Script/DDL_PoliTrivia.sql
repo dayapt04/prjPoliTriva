@@ -2,11 +2,11 @@
 /*
 |----------------------------------------|
 | (©) 2K24 EPN-FIS, All rights reserved. |
-| pat_mic@hotmail.com           pat_mic  |
+| alicia.pereira@epn.edu.ec     dayapt04 |
 |----------------------------------------|
-Autor : Karolina Salazar
+Autor : Dayana Pereira
 Fecha : 24.feb.2k24
-Script: Creacion de la tabla preguntas + datos
+Script: Creacion de la tabla preguntas + respuestas
 */
 -- Tabla de categorías de preguntas
 DROP TABLE IF EXISTS CategoriaEstructura;

@@ -5,6 +5,18 @@ public class PreguntaDTO {
     private Integer IdCategoriaEstructura;
     private String Enunciado;
 
+    public void setIdPregunta(Integer idPregunta) {
+        IdPregunta = idPregunta;
+    }
+
+    public void setIdCategoriaEstructura(Integer idCategoriaEstructura) {
+        IdCategoriaEstructura = idCategoriaEstructura;
+    }
+
+    public void setEnunciado(String enunciado) {
+        Enunciado = enunciado;
+    }
+
     private String Estado;
     private String FechaCrea;
     private String FechaModifica;
