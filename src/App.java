@@ -29,5 +29,19 @@ public class App {
         // String filePath = "qr_code.png";
         // LZCodigoQR.generateQR(data, filePath);
         // LZLectorQR.mostrarImagenQR(filePath);
+
+        // INTERFACES
+
+        // FramePanelMenu panelMenu = new FramePanelMenu();
+        // javax.swing.SwingUtilities.invokeLater(new Runnable() {
+        // public void run() {
+        // try {
+        // new FramePanelMenu().FrameInicio();
+        // } catch (SQLException e) {
+        // e.printStackTrace();
+        // }
+        // }
+        // });
+        // }
     }
 }
