@@ -92,7 +92,7 @@ public class PoliTriviaUI {
         centerPanel.add(selectLabel);
 
         // Creando JComboBox
-        String[] options = { "Cultura General Politecnica", "Politecnico Basico", "Revisar Puntajes de la Partida" };
+        String[] options = { "Cultura General Politecnica", "Politecnico Basico"};
         JComboBox<String> comboBox1 = new JComboBox<>(options);
         centerPanel.add(comboBox1);
 
@@ -136,15 +136,12 @@ public class PoliTriviaUI {
         HashMap<String, Integer> optionValues = new HashMap<>();
         optionValues.put("Cultura General Politecnica", 1);
         optionValues.put("Politecnico Basico", 2);
-        optionValues.put("Revisar Puntajes de la Partida", 3);
 
         // Creando mapas para las opciones del segundo JComboBox
         HashMap<Integer, String[]> option2Values = new HashMap<>();
-        option2Values.put(1,
-                new String[] { "Cultura General Estudiantil", "Cultura General Institucional" });
-        option2Values.put(2, new String[] { "Algebra Lineal", "Calculo en una variable", "Mecanica Newtoniana", "COE",
-                "Analisis Socioeconomico" });
-
+        option2Values.put(1, new String[] { "Cultura General Estudiantil", "Cultura General Institucional" });
+        option2Values.put(2, new String[] { "Algebra Lineal", "Calculo en una variable", "Mecanica Newtoniana", "COE", "Analisis Socioeconomico" });
+            
         HashMap<String, Integer> option2IDs = new HashMap<>();
         option2IDs.put("Cultura General Estudiantil", 3);
         option2IDs.put("Cultura General Institucional", 4);
@@ -183,13 +180,44 @@ public class PoliTriviaUI {
         boton.setFont(new Font("Arial", Font.BOLD, 16)); // Configura el mismo color de letra que el botón "Iniciar
                                                          // Juego"
         // centerPanel.add(boton);
+        // Creando el botón para mostrar el código QR y centrarlo en la pantalla
+        JButton qrButton = new JButton("Mostrar Puntajes");
+        centerPanel.add(qrButton, BorderLayout.NORTH);
+            
+        // Agregar ActionListener al botón QR
+        qrButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Crear y mostrar el JFrame que contiene el código QR
+                FrameMenuRevisarPuntajes frameQR = new FrameMenuRevisarPuntajes();
+                frameQR.setVisible(true);
+                // Centrar el JFrame en la pantalla
+                frameQR.setLocationRelativeTo(null);
+            }
+        });
+
 
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Guarda la respuesta y el nombre del jugador en variables
-                int respuesta = Integer.parseInt(campoRespuesta.getText());
-                int jugador = Integer.parseInt(campoJugador.getText());
+                // Comprobar si los campos están vacíos
+                if (campoRespuesta.getText().isEmpty() || campoJugador.getText().isEmpty()) {
+                    // Mostrar un mensaje de error o realizar alguna acción adecuada
+                    // por ejemplo: JOptionPane.showMessageDialog(null, "Por favor complete todos los campos.");
+                    return;
+                }
+        
+                // Convertir los valores a enteros
+                int respuesta;
+                String jugador;
+                try {
+                    respuesta = Integer.parseInt(campoRespuesta.getText());
+                    jugador = campoJugador.getText();
+                } catch (NumberFormatException ex) {
+                    // Manejar la excepción de conversión de cadena a entero
+                    ex.printStackTrace();
+                    return;
+                }
                 int numeroPregunta = preguntaActual;// Aquí deberías obtener el número de la pregunta
                 int codigoRespuestaCorrecta = numeroRespuestaCorrecta;// Aquí deberías obtener el código de la respuesta
                                                                       // correcta
@@ -214,7 +242,19 @@ public class PoliTriviaUI {
                 }
             }
         });
-
+        
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Verificar si la opción seleccionada es "Revisar Resultados"
+                if (comboBox1.getSelectedItem().equals("Revisar Resultados")) {
+                    // Mostrar el JFrame que contiene el código QR
+                    FrameMenuRevisarPuntajes frameQR = new FrameMenuRevisarPuntajes();
+                    frameQR.setVisible(true);
+                }
+            }
+        });
+        
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
