@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="DLxoPFnFCmC83H28-8nR" name="Page-1">
-        <mxGraphModel dx="495" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="899" dy="402" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -25,7 +25,7 @@
                 <mxCell id="9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="7" vertex="1">
                     <mxGeometry y="70" width="400" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="+ getters/setters&#10;+ escogerParametrosJuego( ) : void&#10;+ listaPenitencias(numJugadores - 1, pentiencias): List&lt;penitencia&gt;&#10;+ obtenerRespuestas(idPregunta) : boolean&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="7" vertex="1">
+                <mxCell id="10" value="+ getters/setters&#10;+ escogerParametrosJuego( ) : void&#10;+ listaPenitencias(numJugadores - 1, pentiencias): List&lt;penitencia&gt;&#10;&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="7" vertex="1">
                     <mxGeometry y="78" width="400" height="72" as="geometry"/>
                 </mxCell>
                 <mxCell id="49" value="" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.499;entryY=0.625;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="19" target="17" edge="1">
@@ -52,7 +52,7 @@
                 <mxCell id="25" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="23" vertex="1">
                     <mxGeometry y="80" width="370" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="+ getters/setters&#10;+ showMenuPrincipal(): void&#10;+ showMenuSalida(): void&#10;+ showMenuCategorias(): void&#10;+ showMenuSubtema(categoria): void&#10;+ obtenerPreguntas(categoria, subtema): List&lt;Pregunta&gt;&#10;+ temporizador(tiempo): void&#10;+ obtenerInfoJugador(nombre, Puntaje, penitencia): List&lt;Datos&gt; &#10;+ generarCodigoQr(Datos, idQr): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="23" vertex="1">
+                <mxCell id="26" value="+ getters/setters&#10;+ showMenuPrincipal(): void&#10;+ showMenuSalida(): void&#10;+ showMenuCategorias(): void&#10;+ showMenuSubtema(categoria): void&#10;+ obtenerPreguntas(categoria, subtema): List&lt;Pregunta&gt;&#10;+ obtenerInfoJugador(nombre, Puntaje, penitencia): List&lt;Datos&gt; &#10;+ generarCodigoQr(Datos, idQr): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="23" vertex="1">
                     <mxGeometry y="88" width="370" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="15" value="CódigoQR" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
@@ -85,7 +85,7 @@
                 <mxCell id="37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="35" vertex="1">
                     <mxGeometry y="100" width="210" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="+ getters/setters&#10;+ contadorPuntaje(esCorrecta) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="35" vertex="1">
+                <mxCell id="38" value="+ getters/setters&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="35" vertex="1">
                     <mxGeometry y="108" width="210" height="42" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" value="Jugador Invitado" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
