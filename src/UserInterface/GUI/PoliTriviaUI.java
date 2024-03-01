@@ -39,38 +39,48 @@ public class PoliTriviaUI {
 
         placeComponents(panel);
         // Mostrando la ventana
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // Hacer la ventana visible
         // frame.pack();
-        frame.setVisible(true);
-        // Creando el botón para cerrar la ventana
-        // JButton btnCerrar = new JButton("Cerrar");
-        // centerPanel.add(btnCerrar);
+        // Establecer tamaño y centrar en la pantalla
+        frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null);
 
-        // // Lógica para manejar el botón de cerrar
-        // btnCerrar.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent e) {
-        // frame.dispose(); // Cierra la ventana
-        // }
-        // });
+        frame.setVisible(true);
 
         // Otra opción es sobreescribir el método defaultCloseOperation del JFrame
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("PoliTrivia");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setBackground(new Color(173, 216, 230)); // Fondo azul claro
+
+        placeComponents(panel);
+
+        frame.getContentPane().add(panel);
+        frame.setSize(800, 600); // Tamaño por defecto
+        frame.setLocationRelativeTo(null); // Centrar en la pantalla
+        frame.setVisible(true);
+    }
+
     private static void placeComponents(JPanel panel) {
         // Creando etiqueta
-        JLabel welcomeLabel = new JLabel("Bienvenido a la PoliTrivia", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("¡BIENVENIDO A LA POLITRIVA!", SwingConstants.CENTER);
         panel.add(welcomeLabel, BorderLayout.NORTH);
 
         // Creando panel central con BoxLayout
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panel.add(centerPanel, BorderLayout.CENTER);
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         // Creando etiqueta de seleccion
-        JLabel selectLabel = new JLabel("Seleccione la Tematica deseada", SwingConstants.CENTER);
+        JLabel selectLabel = new JLabel("           Seleccione la Tematica deseada", SwingConstants.LEFT);
         centerPanel.add(selectLabel);
 
         // Creando JComboBox
@@ -79,14 +89,14 @@ public class PoliTriviaUI {
         centerPanel.add(comboBox1);
 
         // Creando etiqueta de seleccion de categoría
-        JLabel categoryLabel = new JLabel("Seleccione la categoria que le gustaria jugar", SwingConstants.CENTER);
+        JLabel categoryLabel = new JLabel("   Seleccione la categoria que le gustaria jugar", SwingConstants.CENTER);
         centerPanel.add(categoryLabel);
 
         // Creando segundo JComboBox
         JComboBox<String> comboBox2 = new JComboBox<>();
         centerPanel.add(comboBox2);
         // Creando etiqueta de número de jugadores
-        JLabel numPlayersLabel = new JLabel("Numero de jugadores", SwingConstants.CENTER);
+        JLabel numPlayersLabel = new JLabel("  \t                  Numero de jugadores", SwingConstants.CENTER);
         centerPanel.add(numPlayersLabel);
 
         // Creando JComboBox para el número de jugadores
@@ -94,8 +104,25 @@ public class PoliTriviaUI {
         JComboBox<Integer> comboBoxPlayers = new JComboBox<>(numPlayers);
         centerPanel.add(comboBoxPlayers);
         // Creando el botón
-        JButton button = new JButton("Iniciar Juego");
+        JButton button = new JButton("                          Iniciar Juego                         ");
         centerPanel.add(button);
+
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        selectLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        categoryLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        numPlayersLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        button.setFont(new Font("Arial", Font.BOLD, 16));
+        comboBox1.setFont(new Font("Arial", Font.PLAIN, 16));
+        comboBox2.setFont(new Font("Arial", Font.PLAIN, 16));
+        comboBoxPlayers.setFont(new Font("Arial", Font.PLAIN, 16));
+
+        welcomeLabel.setForeground(new Color(34, 139, 34)); // Texto verde oscuro
+        selectLabel.setForeground(Color.BLACK); // Texto negro
+        categoryLabel.setForeground(Color.BLACK); // Texto negro
+        numPlayersLabel.setForeground(Color.BLACK); // Texto negro
+
+        button.setBackground(new Color(34, 139, 34)); // Fondo naranja
+        button.setForeground(Color.WHITE); // Texto blanco
 
         // Asociando valores a las opciones
         HashMap<String, Integer> optionValues = new HashMap<>();
@@ -121,7 +148,7 @@ public class PoliTriviaUI {
 
         JLabel preguntaLabel = new JLabel();
         centerPanel.add(preguntaLabel);
-        preguntaLabel.setText("Aquí va la pregunta");
+        preguntaLabel.setText("                                              Aquí va la pregunta");
 
         JTextArea areaRespuestas = new JTextArea();
         centerPanel.add(areaRespuestas);
@@ -135,10 +162,20 @@ public class PoliTriviaUI {
         JTextField campoRespuesta = new JTextField(10);
         JTextField campoJugador = new JTextField(10);
         JTextArea areaResultado = new JTextArea();
-        JButton botonEvaluar = new JButton("Evaluar");
+        JButton botonEvaluar = new JButton("    Evaluar   ");
+        botonEvaluar.setBackground(button.getBackground()); // Configura el mismo color de fondo que el botón "Iniciar
+                                                            // Juego"
+        botonEvaluar.setForeground(button.getForeground());
+        botonEvaluar.setFont(new Font("Arial", Font.BOLD, 16));
 
         // Crear el botón y el ActionListener
         JButton boton = new JButton("Guardar respuesta");
+        boton.setBackground(button.getBackground()); // Configura el mismo color de fondo que el botón "Iniciar Juego"
+        boton.setForeground(button.getForeground());
+        boton.setFont(new Font("Arial", Font.BOLD, 16)); // Configura el mismo color de letra que el botón "Iniciar
+                                                         // Juego"
+        // centerPanel.add(boton);
+
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -267,120 +304,5 @@ public class PoliTriviaUI {
         });
 
     }
-
-    // // Agregar botones para navegar entre las preguntas
-    // PatButton btnAnt = new PatButton(" << ");
-    // PatButton btnSig = new PatButton(" >> ");
-    // centerPanel.add(btnSig);
-    // centerPanel.add(btnAnt);
-    // // Lógica para manejar el botón de siguiente pregunta
-    // btnSig.addActionListener(new ActionListener() {
-
-    // public void actionPerformed(ActionEvent e) {
-    // if (currentQuestionIndex < questions.length - 1) {
-    // currentQuestionIndex++;
-    // centerPanel.removeAll();
-    // centerPanel.add(new JLabel(questions[currentQuestionIndex]));
-    // centerPanel.add(btnAnt);
-    // centerPanel.add(btnSig);
-    // centerPanel.revalidate();
-    // centerPanel.repaint();
-    // }
-    // }
-    // });
-
-    // Lógica para manejar el botón de pregunta anterior
-    // btnAnt.addActionListener(new ActionListener() {
-    // public void actionPerformed(ActionEvent e) {
-    // if (currentQuestionIndex > 0) {
-    // currentQuestionIndex--;
-    // centerPanel.removeAll();
-    // centerPanel.add(new JLabel(questions[currentQuestionIndex]));
-    // centerPanel.add(btnAnt);
-    // centerPanel.add(btnSig);
-    // centerPanel.revalidate();
-    // centerPanel.repaint();
-    // }
-    // }
-    // });
-    // Lógica para manejar el botón de siguiente pregunta
-
-    // Agregar botones para navegar entre las preguntas
-    // JButton btnAnt = new JButton("Anterior");
-    // JButton btnSig = new JButton("Siguiente");
-    // centerPanel.add(btnAnt);
-    // centerPanel.add(btnSig);
-
-    // // Lógica para manejar el botón de siguiente pregunta
-    // btnSig.addActionListener(new ActionListener() {
-
-    // public void actionPerformed(ActionEvent e) {
-    // if (preguntaActualIndex < preguntasEstudiantes.size() - 1) {
-    // preguntaActualIndex++;
-    // mostrarPreguntaActual();
-    // }
-    // }
-    // });
-
-    // // Lógica para manejar el botón de pregunta anterior
-    // btnAnt.addActionListener(new ActionListener() {
-    // public void actionPerformed(ActionEvent e) {
-    // if (preguntaActualIndex > 0) {
-    // preguntaActualIndex--;
-    // mostrarPreguntaActual();
-    // }
-    // }
-    // });
-
-    // // Método para mostrar la pregunta actual
-    // private void mostrarPreguntaActual() {
-    // JPanel panel = new JPanel();
-    // panel.setLayout(new BorderLayout());
-    // Container frame;
-    // frame.add(panel);
-    // JPanel centerPanel = new JPanel();
-    // String textoRespuestas = "";
-    // JTextArea areaRespuestas = new JTextArea();
-    // centerPanel.add(areaRespuestas);
-    // areaRespuestas.setEditable(false); // Deshabilita la edición
-
-    // for (RespuestaDTO respuesta : respuestas) {
-    // textoRespuestas += respuesta.getIdRespuesta() + ": " +
-    // respuesta.getRespuestaUsuario() + "\n";
-    // }
-    // areaRespuestas.setText(textoRespuestas);
-
-    // JLabel preguntaLabel = new JLabel();
-    // centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-    // panel.add(centerPanel, BorderLayout.CENTER);
-    // if (!preguntasEstudiantes.isEmpty() && preguntaActualIndex <
-    // preguntasEstudiantes.size()) {
-    // PreguntaDTO pregunta = preguntasEstudiantes.get(preguntaActualIndex);
-    // centerPanel.add(preguntaLabel);
-    // preguntaLabel.setText(pregunta.getEnunciado());
-    // preguntaActual = pregunta.getIdPregunta();
-
-    // try {
-    // respuestas = rDAO.readById(pregunta.getIdPregunta());
-    // } catch (Exception ex1) {
-    // ex1.printStackTrace();
-    // }
-
-    // RespuestaDTO rDTO;
-    // numeroRespuestaCorrecta = -1;
-    // for (int j = 0; j < respuestas.size(); j++) {
-    // rDTO = respuestas.get(j);
-    // textoRespuestas += rDTO.getIdRespuesta() + ": " + rDTO.getRespuestaUsuario()
-    // + "\n";
-    // if (rDTO.getAprobada().equals(1)) {
-    // numeroRespuestaCorrecta = rDTO.getIdRespuesta();
-    // }
-    // }
-    // areaRespuestas.setText(textoRespuestas);
-    // } else {
-    // // Si no hay preguntas, muestra un mensaje de error
-    // preguntaLabel.setText("No hay preguntas disponibles");
-    // }
-    // }
 
 }
