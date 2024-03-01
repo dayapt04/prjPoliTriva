@@ -32,7 +32,7 @@ public class PoliTriviaUI {
     static private int preguntaActualIndex = 0;
     static private int categoriaActual = 0;
 
-    public static void mainFrame() {
+    public static void VAmainFrame() {
         SplashScreenForm.show();
         JFrame frame = new JFrame("PoliTrivia");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +41,7 @@ public class PoliTriviaUI {
         panel.setLayout(new BorderLayout());
         frame.add(panel);
 
-        placeComponents(panel);
+        VSplaceComponents(panel);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
 
@@ -51,7 +51,7 @@ public class PoliTriviaUI {
 
     }
 
-    private static void createAndShowGUI() {
+    private static void VAcreateAndShowGUI() {
         JFrame frame = new JFrame("PoliTrivia");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,7 +59,7 @@ public class PoliTriviaUI {
         panel.setLayout(new BorderLayout());
         panel.setBackground(new Color(173, 216, 230));
 
-        placeComponents(panel);
+        VSplaceComponents(panel);
 
         frame.getContentPane().add(panel);
         frame.setSize(800, 600);
@@ -67,7 +67,7 @@ public class PoliTriviaUI {
         frame.setVisible(true);
     }
 
-    private static void placeComponents(JPanel panel) {
+    private static void VSplaceComponents(JPanel panel) {
         JLabel welcomeLabel = new JLabel("¡BIENVENIDO A LA POLITRIVIA!", SwingConstants.CENTER);
         panel.add(welcomeLabel, BorderLayout.NORTH);
 
@@ -155,7 +155,7 @@ public class PoliTriviaUI {
         boton.setBackground(button.getBackground());
         boton.setForeground(button.getForeground());
         boton.setFont(new Font("Arial", Font.BOLD, 16));
-        // Creando el botón para mostrar el código QR y centrarlo en la pantalla
+      
         JButton qrButton = new JButton("Mostrar Puntajes");
         centerPanel.add(qrButton, BorderLayout.NORTH);
 

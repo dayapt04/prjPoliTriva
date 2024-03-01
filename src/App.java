@@ -3,9 +3,9 @@ import UserInterface.GUI.PoliTriviaUI;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        PoliTriviaUI.mainFrame();
+        PoliTriviaUI.VAmainFrame();
         PoliTrivia poliTrivia = new PoliTrivia();
-        poliTrivia.mainPolitrivia();
+        poliTrivia.showMenuPrincipal();
 
     }
 }

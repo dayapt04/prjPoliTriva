@@ -1,5 +1,6 @@
 package BusinessLogic.Entities;
 
+
 import java.util.ArrayList;
 // import java.util.Arrays;
 import java.util.Collections;
@@ -7,10 +8,17 @@ import java.util.Comparator;
 // import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.plaf.basic.BasicBorders.MenuBarBorder;
+
+import BusinessLogic.MenuCategoria;
+
+
+
 public class PAJugadorAnfitrion extends TJJugador {
     private Scanner sc = new Scanner(System.in);
     private int paNumJugadores;
-
+   
+    
     public PAJugadorAnfitrion(String nombre) {
         super(nombre);
     }
@@ -21,71 +29,25 @@ public class PAJugadorAnfitrion extends TJJugador {
 
     public void setPANumJugadores(int paNumJugadores) {
 
+            
+        
+
         if (paNumJugadores <= 1 || paNumJugadores > 5) {
             System.out.println("ERROR. El número de jugadores en MODO MULTIJUGADOR tiene que ser entre 2 y 5");
         } else
             this.paNumJugadores = paNumJugadores;
     }
-
-    // public PAJugadorAnfitrion[] paEscogerParametrosJuego() {
-    // PAJugadorAnfitrion[] Jugador;
-    // int cantidadJugadores;
-    // int bucle = 0;
-    // do {
-    // try {
-    // System.out.println("\nMODO DE JUEGO: \n");
-    // System.out.println("1. INDIVIDUAL \n2. MULTIJUGADOR");
-    // int opcionModo = sc.nextInt();
-    // switch (opcionModo) {
-    // case 1: {
-    // Jugador = new PAJugadorAnfitrion[1];
-    // Jugador[0] = new PAJugadorAnfitrion("Solitario");
-    // bucle = 1;
-    // break;
-    // }
-    // case 2: {
-    // do {
-    // System.out.print("Ingrese el número de jugadores: ");
-    // cantidadJugadores = sc.nextInt();
-    // setPANumJugadores(cantidadJugadores);
-    // sc.nextLine();
-    // Jugador = new PAJugadorAnfitrion[cantidadJugadores];
-    // // if (cantidadJugadores != 0) {
-    // // continue;
-    // // }
-    // } while (getPANumJugadores() == 0);
-    // for (int i = 0; i < cantidadJugadores; i++) {
-    // System.out.print("Ingrese el nombre del Jugador " + (i + 1) + ": ");
-    // String NombreJugador = sc.nextLine();
-    // Jugador[i] = new PAJugadorAnfitrion(NombreJugador);
-    // }
-    // bucle = 1;
-    // break;
-    // }
-    // default:
-    // System.out.println("Ingrese un número válido.");
-    // bucle = 0;
-    // break;
-    // }
-    // } catch (InputMismatchException e) {
-    // System.out.println("Error: Debes ingresar un número entero.");
-    // bucle = 0;
-    // sc.nextLine();
-    // }
-    // Jugador = new PAJugadorAnfitrion[0];
-    // } while (bucle != 1);
-    // return Jugador;
-    // }
     public PAJugadorAnfitrion[] paEscogerParametrosJuego() {
         PAJugadorAnfitrion[] Jugador = new PAJugadorAnfitrion[0];
         // PAJugadorAnfitrion[] Jugador;
         String cantidadJugadores1 = " ";
         int cantidadJugadores = 0;
 
-        System.out.println("\n\tMODO JUEGO \n1. Individual \n2. Multijugador");
+        System.out.println("\n\tMODO JUEGO");
         int bucle = 0;
         do {
-
+            MenuCategoria oMenuCategoria = new MenuCategoria();
+            oMenuCategoria.showMenuPrincipal();
             int tipoDeJuego = sc.nextInt();
             sc.nextLine();
             if (tipoDeJuego == 2) {
@@ -153,38 +115,6 @@ public class PAJugadorAnfitrion extends TJJugador {
 
         return lista_penitencia;
     }
-
-    // public ArrayList<String> paObtenerNombresJugadores(PAJugadorAnfitrion[]
-    // jugadores) {
-    // ArrayList<String> nombresJugadores = new ArrayList<>();
-    // for (PAJugadorAnfitrion jugador : jugadores) {
-    // nombresJugadores.add(jugador.getTJnombre());
-    // }
-    // return nombresJugadores;
-    // }
-
-    // public ArrayList<Integer> paObtenerPuntajesJugadores(PAJugadorAnfitrion[]
-    // jugadores) {
-    // ArrayList<Integer> puntajesJugadores = new ArrayList<>();
-    // for (PAJugadorAnfitrion jugador : jugadores) {
-    // puntajesJugadores.add(jugador.getPuntaje());
-    // }
-    // return puntajesJugadores;
-    // }
-
-    // public int paIndiceMayorPuntaje(PAJugadorAnfitrion[] jugadores) {
-    // int indiceMayorPuntaje = 0;
-    // int mayorPuntaje = jugadores[0].getPuntaje();
-
-    // for (int i = 1; i < jugadores.length; i++) {
-    // int puntajeActual = jugadores[i].getPuntaje();
-    // if (puntajeActual > mayorPuntaje) {
-    // mayorPuntaje = puntajeActual;
-    // indiceMayorPuntaje = i;
-    // }
-    // }
-    // return indiceMayorPuntaje;
-    // }
 
     public ArrayList<String> paObtenerRespuestas(PAJugadorAnfitrion[] jugadores) {
         ArrayList<String> nombresJugadoresConPuntajes = new ArrayList<>();

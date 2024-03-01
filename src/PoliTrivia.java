@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import BusinessLogic.MenuCategoria;
 import BusinessLogic.Entities.LZCodigoQR;
 import BusinessLogic.Entities.LZLectorQR;
 import BusinessLogic.Entities.PAJugadorAnfitrion;
@@ -17,7 +18,10 @@ import DataAccess.RespuestaDTO;
 public class PoliTrivia {
     private Scanner sc = new Scanner(System.in);
 
-    public void mainPolitrivia() throws Exception {
+    MenuCategoria oMenuCategoria = new MenuCategoria();
+
+    public void showMenuPrincipal() throws Exception {
+        
 
         PreguntaDAO pDAO = new PreguntaDAO();
         RespuestaDAO rDAO = new RespuestaDAO();
@@ -31,14 +35,13 @@ public class PoliTrivia {
         int opcionUsuario;
         int opcionCategoria1;
         int opcionCategoria2;
-
+        
         PAJugadorAnfitrion jugadorAnfitrion = new PAJugadorAnfitrion(usuarioRespuesta);
         PAJugadorAnfitrion[] Jugador = jugadorAnfitrion.paEscogerParametrosJuego();
+        
+       
         do {
-            System.out.println("Seleccione la Tematica deseada");
-            System.out.println(
-                    "1. Cultura General Politecnica \n2. Politecnico Basico \n3. Revisar Puntajes de la Partida");
-
+           oMenuCategoria.showMenuCategoria();
             opcionUsuario = sc.nextInt();
             sc.nextLine();
 
@@ -47,9 +50,8 @@ public class PoliTrivia {
                 case 1:
                     int condicion = 0;
                     do {
-                        System.out.println("Seleccione la categoria que le gustaria jugar");
-                        System.out.println(
-                                "1. Cultura General Estudiantil \n2. Cultura General Institucional \n3. Regresar");
+                        //otro menu
+                        oMenuCategoria.showMenuSubtema(1);
                         // 1. Cultura General Estudiantil
                         // 2. Cultura General Institucional
                         opcionCategoria1 = sc.nextInt();
@@ -170,12 +172,7 @@ public class PoliTrivia {
                 case 2:
                     int condicion1 = 0;
                     do {
-                        System.out.println("Seleccione la categoria que le gustaria jugar");
-                        System.out.println("1. Algebra Lineal\n" +
-                                "2. Calculo en una variable\n" +
-                                "3. Mecanica Newtoniana\n" +
-                                "4. COE\n" +
-                                "5. Analisis Socioeconomico\n" + "6. Regresar");
+                        oMenuCategoria.showMenuSubtema(2);
                         // 1. Algebra Lineal
                         // 2. Calculo en una variable
                         // 3. Mecanica Newtoniana
@@ -530,7 +527,7 @@ public class PoliTrivia {
             System.err.println("Error al manipular el archivo " + fileCSV + ": " + e.getMessage());
         }
 
-        String data = "https://epnecuador-my.sharepoint.com/:u:/g/personal/alicia_pereira_epn_edu_ec/EdT-yIqHaQFInOUbLPTU_7ABepGxJPz4SBSfNYjYz2r9_g?e=duQtPQ";
+        String data = "https://docs.google.com/document/d/1P7l9fcgIzC72kYfgZsTUZhmRT6ThUQlOPNHNDj1YCzU/edit?usp=sharing";
 
         String filePath = "qr_code.png";
         LZCodigoQR.generateQR(data, filePath);
