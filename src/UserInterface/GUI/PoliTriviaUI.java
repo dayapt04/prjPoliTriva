@@ -1,3 +1,11 @@
+/*
+|----------------------------------------|
+| ©2024 EPN-FIS, All rights reserved     |       
+| Iexvas@git.hub                         |
+|----------------------------------------|
+-Autor: Alexis Vasco
+-Fecha: 29/02/2024
+*/
 package UserInterface.GUI;
 
 import DataAccess.*;
