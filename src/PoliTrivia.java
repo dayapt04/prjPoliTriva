@@ -511,7 +511,7 @@ public class PoliTrivia {
                     penitencia = (i == 0) ? "" : anfitrion.paListaPenitencias().get(random[j]);
                 }
 
-                String Jugador = anfitrion.paObtenerNombresJugadoresConPuntajes(jugadores).get(i);
+                String Jugador = anfitrion.paObtenerRespuestas(jugadores).get(i);
                 String nombre = Jugador.split(",")[0];
                 int puntajeJugador = Integer
                         .parseInt(Jugador.split(",")[1]);

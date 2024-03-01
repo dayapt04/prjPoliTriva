@@ -186,7 +186,7 @@ public class PAJugadorAnfitrion extends TJJugador {
     // return indiceMayorPuntaje;
     // }
 
-    public ArrayList<String> paObtenerNombresJugadoresConPuntajes(PAJugadorAnfitrion[] jugadores) {
+    public ArrayList<String> paObtenerRespuestas(PAJugadorAnfitrion[] jugadores) {
         ArrayList<String> nombresJugadoresConPuntajes = new ArrayList<>();
         for (PAJugadorAnfitrion jugador : jugadores) {
             nombresJugadoresConPuntajes.add(jugador.getTJnombre() + "," + jugador.getPuntaje());
